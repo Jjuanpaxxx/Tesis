@@ -1,101 +1,139 @@
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.7;
-            color: #2c3e50;
-            background: #ffffff;
-            font-size: 18px;
-        }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #ffffff;
+    font-size: 18px;
+}
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-        /* Header */
-        header {
-            text-align: center;
-            padding: 80px 0 60px;
-            border-bottom: 1px solid #ecf0f1;
-            margin-bottom: 80px;
-        }
+/* Header */
+header {
+    text-align: center;
+    padding: 80px 0 60px;
+    border-bottom: 1px solid #ecf0f1;
+    margin-bottom: 80px;
+}
 
-        h1 {
-            font-size: 3.2em;
-            font-weight: 300;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
+h1 {
+    font-size: 3.2em;
+    font-weight: 300;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
 
-        .hero-subtitle {
-            font-size: 1.3em;
-            color: #7f8c8d;
-            font-weight: 300;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+.hero-subtitle {
+    font-size: 1.3em;
+    color: #7f8c8d;
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto;
+}
 
-        /* Navigation */
-        nav {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            border-bottom: 1px solid #ecf0f1;
-            margin-bottom: 60px;
-        }
+/* Navigation - MODIFICADO PARA UNA SOLA LÍNEA */
+nav {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    border-bottom: 1px solid #ecf0f1;
+    margin-bottom: 60px;
+    overflow-x: auto; /* Permite scroll horizontal si es necesario */
+    overflow-y: hidden;
+}
 
-        .nav-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+.nav-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-        .nav-list {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            gap: 40px;
-            padding: 25px 0;
-            flex-wrap: wrap;
-        }
+.nav-list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 40px;
+    padding: 25px 0;
+    flex-wrap: nowrap; /* CAMBIADO: evita que salte a múltiples líneas */
+    white-space: nowrap; /* Evita que el texto se rompa */
+}
 
-        .nav-list a {
-            color: #34495e;
-            text-decoration: none;
-            font-weight: 400;
-            font-size: 1.1em;
-            transition: color 0.2s ease;
-            position: relative;
-        }
+.nav-list li {
+    flex-shrink: 0; /* AGREGADO: evita que los items se compriman */
+}
 
-        .nav-list a:hover {
-            color: #e74c3c;
-        }
+.nav-list a {
+    color: #34495e;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1.1em;
+    transition: color 0.2s ease;
+    position: relative;
+    white-space: nowrap; /* AGREGADO: evita que el texto se rompa */
+}
 
-        .nav-list a:hover::after {
-            width: 100%;
-        }
+.nav-list a:hover {
+    color: #e74c3c;
+}
 
-        .nav-list a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #e74c3c;
-            transition: width 0.2s ease;
-        }
+.nav-list a:hover::after {
+    width: 100%;
+}
 
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #e74c3c;
+    transition: width 0.2s ease;
+}
+
+/* Opcional: Ajustes para pantallas más pequeñas */
+@media (max-width: 900px) {
+    .nav-list {
+        gap: 25px; /* Reduce el espacio entre items en pantallas pequeñas */
+    }
+    
+    .nav-list a {
+        font-size: 1em; /* Reduce ligeramente el tamaño de fuente */
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-list {
+        gap: 20px;
+    }
+    
+    .nav-list a {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-list {
+        gap: 15px;
+    }
+    
+    .nav-list a {
+        font-size: 0.9em;
+    }
+}
         /* Sections */
         section {
             margin-bottom: 120px;
