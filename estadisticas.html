@@ -59,6 +59,434 @@
                 </div>
             </div>
 
+
+            <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta sobre Desastres Naturales</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+            font-size: 2em;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 700px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .chart-container h2 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .chart-container p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        canvas {
+            max-height: 400px;
+        }
+
+        .bar-chart canvas {
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resultados de la Encuesta sobre Desastres Naturales</h1>
+    
+    <!-- Gráfico 1 -->
+    <div class="chart-container">
+        <h2>¿Sabes qué son los desastres naturales?</h2>
+        <p>36 respuestas</p>
+        <canvas id="chart1"></canvas>
+    </div>
+
+    <!-- Gráfico 2 -->
+    <div class="chart-container">
+        <h2>¿Te parece importante que las personas aprendan cómo actuar en un desastre?</h2>
+        <p>36 respuestas</p>
+        <canvas id="chart2"></canvas>
+    </div>
+
+    <!-- Gráfico 3 -->
+    <div class="chart-container">
+        <h2>¿Te gustaría que en tu escuela o trabajo enseñen qué hacer ante un desastre?</h2>
+        <p>36 respuestas</p>
+        <canvas id="chart3"></canvas>
+    </div>
+
+    <!-- Gráfico 4 -->
+    <div class="chart-container bar-chart">
+        <h2>¿Qué es lo más importante para vos durante un desastre?</h2>
+        <p>36 respuestas</p>
+        <canvas id="chart4"></canvas>
+    </div>
+
+    <!-- Gráfico 5 -->
+    <div class="chart-container">
+        <h2>¿Qué elemento te parece más importante para reducir la vulnerabilidad ante desastres?</h2>
+        <p>36 respuestas</p>
+        <canvas id="chart5"></canvas>
+    </div>
+
+    <!-- Gráfico 6 -->
+    <div class="chart-container">
+        <h2>¿Habías escuchado antes sobre sensores que detectan peligros?</h2>
+        <p>36 respuestas</p>
+        <canvas id="chart6"></canvas>
+    </div>
+
+    <!-- Gráfico 7 -->
+    <div class="chart-container">
+        <h2>¿Te sentirías más seguro si tu ciudad usara tecnología para alertar sobre peligros?</h2>
+        <p>36 respuestas</p>
+        <canvas id="chart7"></canvas>
+    </div>
+
+    <!-- Gráfico 8 -->
+    <div class="chart-container">
+        <h2>¿Crees que la tecnología podría ayudar a prevenir y evitar los desastres naturales?</h2>
+        <p>36 respuestas</p>
+        <canvas id="chart8"></canvas>
+    </div>
+
+    <!-- Gráfico 9 -->
+    <div class="chart-container">
+        <h2>¿Pensás que los gobiernos deben invertir más en tecnología para prevenir desastres?</h2>
+        <p>36 respuestas</p>
+        <canvas id="chart9"></canvas>
+    </div>
+
+    <!-- Gráfico 10 -->
+    <div class="chart-container">
+        <h2>¿Te gustaría aprender más sobre los desastres naturales y cómo prevenirlos?</h2>
+        <p>36 respuestas</p>
+        <canvas id="chart10"></canvas>
+    </div>
+
+    <script>
+        // Configuración común para todos los gráficos
+        Chart.defaults.font.size = 14;
+
+        // Gráfico 1: ¿Sabes qué son los desastres naturales?
+        new Chart(document.getElementById('chart1'), {
+            type: 'pie',
+            data: {
+                labels: ['Mucho', 'Poco', 'Más o menos', 'Nada'],
+                datasets: [{
+                    data: [38.9, 16.7, 44.4, 0],
+                    backgroundColor: ['#4285F4', '#EA4335', '#FBBC04', '#34A853']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Gráfico 2: ¿Te parece importante?
+        new Chart(document.getElementById('chart2'), {
+            type: 'pie',
+            data: {
+                labels: ['Muy importante', 'Importante', 'Poco importante', 'Nada importante'],
+                datasets: [{
+                    data: [77.8, 22.2, 0, 0],
+                    backgroundColor: ['#4285F4', '#EA4335', '#FBBC04', '#34A853']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Gráfico 3: ¿Te gustaría que enseñen?
+        new Chart(document.getElementById('chart3'), {
+            type: 'pie',
+            data: {
+                labels: ['Me gustaría', 'No me gustaría', 'Quizás'],
+                datasets: [{
+                    data: [83.3, 0, 16.7],
+                    backgroundColor: ['#4285F4', '#EA4335', '#FBBC04']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Gráfico 4: ¿Qué es lo más importante?
+        new Chart(document.getElementById('chart4'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Proteger a la familia',
+                    'Tener información',
+                    'Mantener la calma',
+                    'Seguir las instrucciones',
+                    'Proteger a mis alumnos y alumnas',
+                    'Buscar un lugar seguro'
+                ],
+                datasets: [{
+                    label: 'Respuestas',
+                    data: [25, 16, 19, 16, 1, 1],
+                    backgroundColor: '#7C4DFF'
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let percentage = ((context.parsed.x / 36) * 100).toFixed(1);
+                                return context.parsed.x + ' (' + percentage + '%)';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 25
+                    }
+                }
+            }
+        });
+
+        // Gráfico 5: Elemento más importante para reducir vulnerabilidad
+        new Chart(document.getElementById('chart5'), {
+            type: 'pie',
+            data: {
+                labels: [
+                    'La tecnología (sensores, IA, drones)',
+                    'La educación y preparación comunitaria',
+                    'Las políticas del Estado',
+                    'La infraestructura física (edificios, obras)'
+                ],
+                datasets: [{
+                    data: [25, 41.7, 8.3, 25],
+                    backgroundColor: ['#4285F4', '#EA4335', '#FBBC04', '#34A853']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Gráfico 6: ¿Habías escuchado sobre sensores?
+        new Chart(document.getElementById('chart6'), {
+            type: 'pie',
+            data: {
+                labels: ['Sí', 'Poco', 'Nada'],
+                datasets: [{
+                    data: [30.6, 47.2, 22.2],
+                    backgroundColor: ['#4285F4', '#EA4335', '#FBBC04']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Gráfico 7: ¿Te sentirías más seguro?
+        new Chart(document.getElementById('chart7'), {
+            type: 'pie',
+            data: {
+                labels: ['Seguramente', 'Quizás', 'Me es indiferente'],
+                datasets: [{
+                    data: [91.7, 8.3, 0],
+                    backgroundColor: ['#4285F4', '#EA4335', '#FBBC04']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Gráfico 8: ¿Crees que la tecnología podría ayudar?
+        new Chart(document.getElementById('chart8'), {
+            type: 'pie',
+            data: {
+                labels: ['Seguramente', 'Quizás', 'Me es indiferente'],
+                datasets: [{
+                    data: [72.2, 27.8, 0],
+                    backgroundColor: ['#4285F4', '#EA4335', '#FBBC04']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Gráfico 9: ¿Gobiernos deben invertir más?
+        new Chart(document.getElementById('chart9'), {
+            type: 'pie',
+            data: {
+                labels: ['Seguramente', 'Quizás', 'Me es indiferente'],
+                datasets: [{
+                    data: [80.6, 16.7, 2.8],
+                    backgroundColor: ['#4285F4', '#EA4335', '#FBBC04']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Gráfico 10: ¿Te gustaría aprender más?
+        new Chart(document.getElementById('chart10'), {
+            type: 'pie',
+            data: {
+                labels: ['Me encantaría', 'Tal vez', 'Me es indiferente'],
+                datasets: [{
+                    data: [63.9, 30.6, 5.6],
+                    backgroundColor: ['#4285F4', '#EA4335', '#FBBC04']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
             <!-- <div class="content-block">
                 <h3>Tendencias Significativas</h3>
                 <ul>
